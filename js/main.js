@@ -1,66 +1,32 @@
 $(document).ready(function() {
   $('.mfp-iframe').magnificPopup({
     type: 'image',
-    // other options
     closeMarkup: '<button class="mfp-close"/></button>'
   });
-  // $('.images-container').magnificPopup({
-  //   delegate: 'a',
-  //   type: 'image',
-  //   gallery:{
-  //     enabled:true
-  //   },
-  //   closeMarkup: '<button class="mfp-close"/></button>'
-  //   // other options
-  // });
   var rellax = new Rellax('.rellax', {
     horizontal: true,
     wrapper: 'main',
     vertical: false,
     speed: -5,
     center: true,
-    //Disable vertical Parallax Scrolling     vertical:false
+  });
+
+  $(document).on('click', '.footer-logo', function () {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        let target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+            $('.main-gallery').animate({scrollLeft: (target.offset().top)});
+            return false;
+        }
+    }
   });
 
 });
 
 
-// var pswpElement = document.querySelectorAll('.pswp')[0];
-
-// // build items array
-// var items = [
-//     {
-//         src: 'https://placekitten.com/600/400',
-//         w: 600,
-//         h: 400
-//     },
-//     {
-//         src: 'https://placekitten.com/1200/900',
-//         w: 1200,
-//         h: 900
-//     }
-// ];
-
-// // define options (if needed)
-// var options = {
-//     // optionName: 'option value'
-//     // for example:
-//     index: 0 // start at first slide
-// };
-
-// // Initializes and opens PhotoSwipe
-// var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-
-// // openPhotoSwipe();
-
-// $(document).on('click', 'figure', function() {
-//   openPhotoSwipe();
-// })
-
 
 'use strict';
-
-/* global jQuery, PhotoSwipe, PhotoSwipeUI_Default, console */
 
 (function($) {
 
